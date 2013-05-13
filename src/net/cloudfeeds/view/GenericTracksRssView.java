@@ -27,6 +27,7 @@ import com.sun.syndication.feed.rss.Item;
 import com.sun.syndication.feed.module.mediarss.MediaEntryModuleImpl;
 import com.sun.syndication.feed.module.mediarss.io.*;
 import com.sun.syndication.feed.module.mediarss.types.MediaContent;
+import com.sun.syndication.feed.module.mediarss.types.Metadata;
 import com.sun.syndication.feed.module.mediarss.types.UrlReference;
 
 
@@ -65,6 +66,8 @@ public class GenericTracksRssView extends AbstractRssView {
 			Item item = new Item();
 			MediaContent[] mediacontents = new MediaContent[1];
 			MediaContent mediaitem = new MediaContent( new UrlReference(track.getPermalinkUrl()) );
+			Metadata mediaitemmetadata = new Metadata();
+			
 			mediaitem.setType("audio/mpeg");
 			mediacontents[0] = mediaitem;
 
@@ -73,7 +76,9 @@ public class GenericTracksRssView extends AbstractRssView {
 			Description description = new Description();
 			description.setValue("");
 			// item.setDescription(description);
-			
+			String[] rating = new String[]{track.getPlaybackCount().toString()};
+			mediaitemmetadata.setKeywords(rating);
+			mediaitem.setMetadata(mediaitemmetadata);
 			Content content = new Content();
 			content.setType("encoded");
 			
