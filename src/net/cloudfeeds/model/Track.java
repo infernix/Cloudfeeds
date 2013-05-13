@@ -60,7 +60,8 @@ import javax.xml.datatype.XMLGregorianCalendar;
     "permalinkUrl",
     "artworkUrl",
     "user",
-    "downloadUrl"
+    "downloadUrl",
+    "playbackCount"
 })
 @XmlRootElement(name = "track")
 public class Track {
@@ -91,6 +92,8 @@ public class Track {
     protected User user;
     @XmlElement(name = "download-url")
     protected String downloadUrl;
+    @XmlElement (name = "playback-count")
+    protected BigInteger playbackCount;
 
     /**
      * Gets the value of the id property.
@@ -326,11 +329,11 @@ public class Track {
 
     /**
      * Gets the value of the downloadUrl property.
-     * 
+     *
      * @return
      *     possible object is
      *     {@link String }
-     *     
+     *
      */
     public String getDownloadUrl() {
         return downloadUrl;
@@ -338,14 +341,38 @@ public class Track {
 
     /**
      * Sets the value of the downloadUrl property.
-     * 
+     *
      * @param value
      *     allowed object is
      *     {@link String }
-     *     
+     *
      */
     public void setDownloadUrl(String value) {
         this.downloadUrl = value;
+    }
+
+    /**
+     * Gets the value of the playbackCount property.
+     *
+     * @return
+     *     possible object is
+     *     {@link BigInteger }
+     *
+     */
+    public BigInteger getPlaybackCount() {
+        return playbackCount;
+    }
+
+    /**
+     * Sets the value of the playbackCount property.
+     *
+     * @param value
+     *     allowed object is
+     *     {@link BigInteger }
+     *
+     */
+    public void setPlaybackCount(BigInteger value) {
+        this.playbackCount = value;
     }
 
 }
